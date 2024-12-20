@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { MovieResults } from "@/types/movie";
 import MovieCardsRow from "../MovieCardsRow";
-import Hero from "../Hero";
+import Hero from "./Hero";
 
 type HomeClientComponentType = {
   popular: MovieResults;

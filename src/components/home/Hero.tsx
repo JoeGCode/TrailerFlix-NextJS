@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import placeholder from "@/utils/shimmerPlaceholderImage";
 import { MdPlayCircle } from "react-icons/md";
+import Link from "next/link";
 
 type HeroType = {
   movie: Movie;
@@ -61,7 +62,7 @@ function Hero({ movie }: HeroType) {
         <p className="mb-4 max-w-md text-sm sm:text-base md:text-lg lg:text-xl line-clamp-3 sm:line-clamp-none">
           {movie.overview}
         </p>
-        <div className="flex">
+        <div className="flex gap-4">
           {showWatchButton && (
             <button
               onClick={openModal}
@@ -71,6 +72,11 @@ function Hero({ movie }: HeroType) {
               Watch Trailer
             </button>
           )}
+          <Link href={`/movie/${movie.id}`}>
+            <button className="rounded bg-white bg-opacity-40 px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base font-bold text-white transition hover:bg-opacity-50">
+              More Info
+            </button>
+          </Link>
         </div>
       </div>
       {/* Modal */}

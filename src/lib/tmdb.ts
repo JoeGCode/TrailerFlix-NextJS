@@ -1,4 +1,4 @@
-import { MovieResults, MovieVideoResults } from "@/types/movie";
+import { MovieDetails, MovieResults, MovieVideoResults } from "@/types/movie";
 
 const API_TOKEN = process.env.API_TOKEN;
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -35,6 +35,17 @@ export async function getMovieVideos(
   );
   if (!response.ok) {
     throw new Error("Failed to fetch movie videos");
+  }
+  return response.json();
+}
+
+export async function getMovieDetails(movieId: number): Promise<MovieDetails> {
+  const response = await fetch(
+    `${BASE_URL}/movie/${movieId}?language=en-US`,
+    getOptions
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch movie");
   }
   return response.json();
 }
