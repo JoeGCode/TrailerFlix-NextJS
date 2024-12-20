@@ -3,19 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  background-color: black;
+  color: white;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  .about-question {
+    @apply text-gray-400 text-lg md:text-xl;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  .about-answer {
+    @apply text-xl md:text-2xl;
+  }
 }
