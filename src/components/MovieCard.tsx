@@ -2,6 +2,7 @@ import { Movie } from "@/types/movie";
 import Image from "next/image";
 import React from "react";
 import placeholder from "@/utils/shimmerPlaceholderImage";
+import { TMDB_IMAGE_BASE_URL } from "@/utils/constants";
 
 type MovieCardType = {
   movie: Movie;
@@ -24,7 +25,7 @@ function MovieCard({ movie, clickHandler = () => {} }: MovieCardType) {
           </p>
         </div>
         <Image
-          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+          src={TMDB_IMAGE_BASE_URL + movie.poster_path}
           alt={movie.title}
           fill
           sizes="(max-width: 640px) 25vw,

@@ -1,4 +1,10 @@
-import { MovieDetails, MovieResults, MovieVideoResults } from "@/types/movie";
+import {
+  MovieCredits,
+  MovieDetails,
+  MovieImages,
+  MovieResults,
+  MovieVideoResults,
+} from "@/types/movie";
 
 const API_TOKEN = process.env.API_TOKEN;
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -46,6 +52,28 @@ export async function getMovieDetails(movieId: number): Promise<MovieDetails> {
   );
   if (!response.ok) {
     throw new Error("Failed to fetch movie");
+  }
+  return response.json();
+}
+
+export async function getMovieImages(movieId: number): Promise<MovieImages> {
+  const response = await fetch(
+    `${BASE_URL}/movie/${movieId}/images`,
+    getOptions
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch movie images");
+  }
+  return response.json();
+}
+
+export async function getMovieCredits(movieId: number): Promise<MovieCredits> {
+  const response = await fetch(
+    `${BASE_URL}/movie/${movieId}/credits`,
+    getOptions
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch movie credits");
   }
   return response.json();
 }

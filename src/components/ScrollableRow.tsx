@@ -1,20 +1,13 @@
 "use client";
-import { Movie } from "@/types/movie";
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import MovieCard from "./MovieCard";
 
-type MoviesRowType = {
-  movies: Movie[];
+type ScrollableRowType = {
+  children: React.ReactNode;
   title: string;
-  clickHandler?: (movie: Movie) => void;
 };
 
-function MovieCardsRow({
-  movies,
-  title,
-  clickHandler = () => {},
-}: MoviesRowType) {
+function ScrollableRow({ title, children }: ScrollableRowType) {
   const rowRef = useRef<HTMLDivElement>(null);
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(true);
@@ -37,7 +30,7 @@ function MovieCardsRow({
         }
       };
     }
-  }, [movies]);
+  }, [children]);
 
   function scroll(direction: "left" | "right") {
     if (rowRef.current) {
@@ -52,8 +45,8 @@ function MovieCardsRow({
 
   return (
     <section className="mb-8">
-      <h2 className="text-2xl font-bold mb-4 ml-2">{title}</h2>
-      {movies && (
+      <h2 className="text-2xl font-bold mb-4 px-4 sm:px-6 md:px-12">{title}</h2>
+      {children && (
         <div className="relative flex items-center">
           {showLeftButton && (
             <button
@@ -68,13 +61,7 @@ function MovieCardsRow({
             className="w-full overflow-x-scroll whitespace-nowrap scroll-smooth relative"
             style={{ scrollbarWidth: "none" }}
           >
-            {movies.map((movie) => (
-              <MovieCard
-                key={movie.id}
-                movie={movie}
-                clickHandler={clickHandler}
-              />
-            ))}
+            {children}
           </div>
           {showRightButton && (
             <button
@@ -90,4 +77,4 @@ function MovieCardsRow({
   );
 }
 
-export default MovieCardsRow;
+export default ScrollableRow;

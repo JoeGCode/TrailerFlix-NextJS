@@ -5,6 +5,8 @@ import React, { useState, useEffect } from "react";
 import placeholder from "@/utils/shimmerPlaceholderImage";
 import { MdPlayCircle } from "react-icons/md";
 import Link from "next/link";
+import YoutubeModal from "../YoutubeModal";
+import { TMDB_IMAGE_BASE_URL } from "@/utils/constants";
 
 type HeroType = {
   movie: Movie;
@@ -23,6 +25,7 @@ function Hero({ movie }: HeroType) {
   const showWatchButton = heroVideo ? true : false;
 
   useEffect(() => {
+    setShowModal(false);
     const fetchVideos = async () => {
       try {
         const res = await fetch(`/api/movie-videos?movieId=${movie.id}`);
@@ -40,13 +43,12 @@ function Hero({ movie }: HeroType) {
   }, [movie]);
 
   const openModal = () => setShowModal(true);
-  const closeModal = () => setShowModal(false);
 
   return (
     <section className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] w-full overflow-hidden">
       {/* Image Backdrop */}
       <Image
-        src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+        src={TMDB_IMAGE_BASE_URL + movie.backdrop_path}
         alt={movie.title}
         fill
         className="object-cover"
@@ -80,38 +82,12 @@ function Hero({ movie }: HeroType) {
         </div>
       </div>
       {/* Modal */}
-      {showModal && (
-        <div
-          className="fixed inset-0 z-50 flex items-start sm:items-center justify-center bg-black bg-opacity-50 p-4 pt-32 sm:p-4"
-          onClick={closeModal}
-        >
-          <div
-            className="relative w-full max-w-[90vw] sm:max-w-4xl rounded-lg bg-black p-2 sm:p-4"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={closeModal}
-              className="absolute -top-10 right-0 bg-black rounded-md px-2 py-1 text-sm sm:text-base hover:text-gray-300"
-            >
-              Close
-            </button>
-            <div className="aspect-video">
-              {heroVideo ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/${heroVideo.key}`}
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="h-full w-full"
-                ></iframe>
-              ) : (
-                <p className="flex h-full items-center justify-center text-white">
-                  No trailer available
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
+      {heroVideo && (
+        <YoutubeModal
+          showModal={showModal}
+          videoKey={heroVideo.key}
+          closeModal={() => setShowModal(false)}
+        />
       )}
     </section>
   );

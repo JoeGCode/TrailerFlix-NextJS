@@ -88,3 +88,69 @@ export type MovieDetails = {
   vote_average: number;
   vote_count: number;
 };
+
+export type MovieImages = {
+  backdrops: Array<{
+    aspect_ratio: number;
+    height: number;
+    iso_639_1?: string;
+    file_path: string;
+    vote_average: number;
+    vote_count: number;
+    width: number;
+  }>;
+  id: number;
+  logos: Array<{
+    aspect_ratio: number;
+    height: number;
+    iso_639_1: string;
+    file_path: string;
+    vote_average: number;
+    vote_count: number;
+    width: number;
+  }>;
+  posters: Array<{
+    aspect_ratio: number;
+    height: number;
+    iso_639_1?: string;
+    file_path: string;
+    vote_average: number;
+    vote_count: number;
+    width: number;
+  }>;
+};
+
+export interface MovieCredits {
+  id: number;
+  cast: MovieCast[];
+  crew: MovieCrew[];
+}
+
+export interface MovieCast {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path?: string;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+}
+
+export interface MovieCrew {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path?: string;
+  credit_id: string;
+  department: string;
+  job: string;
+}
