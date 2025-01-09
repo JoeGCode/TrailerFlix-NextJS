@@ -30,14 +30,20 @@ function Hero({ movie, logoSrc }: HeroType) {
       {/* Content */}
       <div className="z-10 flex h-full flex-col items-start justify-start p-4 sm:p-6 md:p-12">
         <div className="relative flex items-start justify-start w-full h-[12vh]">
-          <Image
-            src={TMDB_IMAGE_BASE_URL + logoSrc}
-            alt={movie.title}
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ height: "100%", width: "auto" }}
-          />
+          {logoSrc ? (
+            <Image
+              src={TMDB_IMAGE_BASE_URL + logoSrc}
+              alt={movie.title}
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ height: "100%", width: "auto" }}
+            />
+          ) : (
+            <h1 className="mb-2 sm:mb-4 text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold">
+              {movie.title}
+            </h1>
+          )}
         </div>
         <p className="text-base md:text-lg w-full py-4">
           {new Date(movie.release_date).getFullYear()} &bull;{" "}
