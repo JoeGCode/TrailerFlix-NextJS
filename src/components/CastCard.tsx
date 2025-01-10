@@ -10,8 +10,8 @@ type CastCardType = {
 
 function CastCard({ castMember }: CastCardType) {
   return (
-    <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 px-2 relative inline-block">
-      <div className="relative aspect-[3/4] overflow-hidden rounded-md flex flex-col justify-end text-center">
+    <div className="w-1/3 sm:w-1/4 md:w-1/5 lg:w-1/6 xl:w-[14.3%] 2xl:w-[12.5%] 3xl:w-[11.1%] px-2 relative inline-block">
+      <div className="relative aspect-[326/490] overflow-hidden rounded-md flex flex-col justify-end text-center">
         <div className="w-full h-full absolute inset-0 bg-black/80 opacity-0 hover:opacity-100 z-10">
           <p className="flex justify-center items-center h-full px-2">
             <span className="block w-full truncate whitespace-normal">
@@ -32,8 +32,10 @@ function CastCard({ castMember }: CastCardType) {
           placeholder={placeholder}
         />
       </div>
-      <p className="text-center">{castMember.name}</p>
-      <p className="text-center">{castMember.character}</p>
+      <div className="flex flex-col items-center justify-center p-2 truncate whitespace-normal">
+        <p className="text-center">{castMember.name}</p>
+        <p className="text-center">({castMember.character})</p>
+      </div>
     </div>
   );
 }

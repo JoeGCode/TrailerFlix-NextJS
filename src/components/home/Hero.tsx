@@ -65,20 +65,20 @@ function Hero({ movie }: HeroType) {
           {movie.overview}
         </p>
         <div className="flex gap-4">
+          <Link href={`/movie/${movie.id}`}>
+            <button className="rounded bg-white bg-opacity-40 p-4 sm:text-xl font-bold text-white transition hover:bg-opacity-50">
+              More Info
+            </button>
+          </Link>
           {showWatchButton && (
             <button
               onClick={openModal}
-              className="flex gap-2 items-center rounded bg-white px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base font-bold text-black transition hover:bg-opacity-80"
+              className="flex gap-2 items-center rounded bg-white p-4 sm:text-xl font-bold text-black transition hover:bg-opacity-80"
             >
               <MdPlayCircle size={20} />
               Watch Trailer
             </button>
           )}
-          <Link href={`/movie/${movie.id}`}>
-            <button className="rounded bg-white bg-opacity-40 px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base font-bold text-white transition hover:bg-opacity-50">
-              More Info
-            </button>
-          </Link>
         </div>
       </div>
       {/* Modal */}
