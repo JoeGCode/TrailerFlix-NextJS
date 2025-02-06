@@ -9,12 +9,13 @@ import {
 const API_TOKEN = process.env.API_TOKEN;
 const BASE_URL = "https://api.themoviedb.org/3";
 
-const getOptions = {
+const getOptions: RequestInit = {
   method: "GET",
   headers: {
     accept: "application/json",
     Authorization: `Bearer ${API_TOKEN}`,
   },
+  next: { revalidate: 60 * 60 * 24 }, // Revalidate the data every 24 hours
 };
 
 type MovieCategory = "popular" | "top_rated" | "upcoming";
