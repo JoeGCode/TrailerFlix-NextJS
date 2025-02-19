@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SearchBar from "./SearchBar";
+import { Suspense } from "react";
 
 const Navbar = () => {
   return (
@@ -10,7 +11,9 @@ const Navbar = () => {
         </h1>
       </Link>
       <div className="w-1/2">
-        <SearchBar />
+        <Suspense fallback={<div>Loading...</div>}>
+          <SearchBar />
+        </Suspense>
       </div>
     </nav>
   );
