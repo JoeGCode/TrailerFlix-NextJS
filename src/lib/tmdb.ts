@@ -85,7 +85,7 @@ export async function searchMovies(query: string): Promise<MovieResults> {
     getOptions
   );
   if (!response.ok) {
-    throw new Error("Failed to fetch movie credits");
+    throw new Error("Failed to fetch search results");
   }
   return response.json();
 }

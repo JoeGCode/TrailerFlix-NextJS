@@ -6,17 +6,21 @@ import React from "react";
 function SearchBar() {
   const searchParams = useSearchParams();
   const pathName = usePathname();
-  const { replace } = useRouter();
+  const { replace, push } = useRouter();
 
   const handleSearch = debouncedCallback(function (term: string) {
     const params = new URLSearchParams(searchParams);
     term = term.trim();
     if (term) {
-      params.set("search", term);
+      params.set("q", term);
     } else {
-      params.delete("search");
+      params.delete("q");
     }
-    replace(`${pathName}?${params.toString()}`);
+    if (pathName === "/search") {
+      replace(`${pathName}?${params.toString()}`);
+    } else {
+      push(`/search?${params.toString()}`);
+    }
   }, 300);
 
   return (
