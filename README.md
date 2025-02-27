@@ -9,11 +9,11 @@ A sleek, Netflix-inspired UI for exploring film trailers and information about y
 
 ## Roadmap
 
-- 🔍 **Search Functionality**
-- 🤝 **Related and Recommended Films**
-- 📺 **TV Shows**
-- 🎭 **Actor Pages**
-- 💖 **Favorites**
+- [x] 🔍 **Search Functionality**
+- [ ] 🤝 **Related and Recommended Films**
+- [ ] 📺 **TV Shows**
+- [ ] 🎭 **Actor Pages**
+- [ ] 💖 **Favorites**
 
 ## Acknowledgements
 
