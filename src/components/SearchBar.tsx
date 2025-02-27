@@ -30,7 +30,7 @@ function SearchBar() {
         type="text"
         placeholder="Search"
         onChange={(e) => handleSearch(e.target.value)}
-        defaultValue={searchParams.get("search")?.toString() || ""}
+        defaultValue={searchParams.get("q") || ""}
       />
     </div>
   );
