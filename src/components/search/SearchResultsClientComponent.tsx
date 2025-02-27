@@ -15,7 +15,7 @@ function SearchResultsClientComponent({
     push(`/movie/${movie.id}`);
   }
   return (
-    <div>
+    <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4 max-w-screen-xl my-0 mx-auto">
       {searchResults.results.map((movie) => (
         <MovieCard key={movie.id} movie={movie} clickHandler={clickHandler} />
       ))}

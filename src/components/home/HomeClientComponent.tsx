@@ -4,6 +4,7 @@ import { MovieResults } from "@/types/movie";
 import Hero from "./Hero";
 import ScrollableRow from "../ScrollableRow";
 import MovieCard from "../MovieCard";
+import ScrollableRowMovieCardWrapper from "../ScrollableRowMovieCardWrapper";
 
 type HomeClientComponentType = {
   popular: MovieResults;
@@ -21,17 +22,23 @@ function HomeClientComponent({
       <Hero movie={heroMovie} />
       <ScrollableRow title="Popular">
         {popular.results.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} clickHandler={setHeroMovie} />
+          <ScrollableRowMovieCardWrapper key={movie.id}>
+            <MovieCard movie={movie} clickHandler={setHeroMovie} />
+          </ScrollableRowMovieCardWrapper>
         ))}
       </ScrollableRow>
       <ScrollableRow title="Top Rated">
         {topRated.results.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} clickHandler={setHeroMovie} />
+          <ScrollableRowMovieCardWrapper key={movie.id}>
+            <MovieCard movie={movie} clickHandler={setHeroMovie} />
+          </ScrollableRowMovieCardWrapper>
         ))}
       </ScrollableRow>
       <ScrollableRow title="Upcoming">
         {upcoming.results.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} clickHandler={setHeroMovie} />
+          <ScrollableRowMovieCardWrapper key={movie.id}>
+            <MovieCard movie={movie} clickHandler={setHeroMovie} />
+          </ScrollableRowMovieCardWrapper>
         ))}
       </ScrollableRow>
     </div>
