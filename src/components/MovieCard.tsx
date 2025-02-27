@@ -13,7 +13,7 @@ function MovieCard({ movie, clickHandler = () => {} }: MovieCardType) {
   return (
     <div
       key={movie.id}
-      className="w-1/3 sm:w-1/4 md:w-1/5 lg:w-1/6 xl:w-[14.3%] 2xl:w-[12.5%] 3xl:w-[11.1%] px-2 cursor-pointer relative inline-block"
+      className="w-full px-2 cursor-pointer relative inline-block"
       onClick={() => clickHandler(movie)}
     >
       <div className="relative aspect-[250/374] overflow-hidden rounded-md flex flex-col justify-end text-center">
