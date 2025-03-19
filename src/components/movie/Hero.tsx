@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import placeholder from "@/utils/shimmerPlaceholderImage";
 import { TMDB_IMAGE_BASE_URL } from "@/utils/constants";
+import AddToListButton from "../AddToListButton";
 
 type HeroType = {
   movie: MovieDetails;
@@ -54,6 +55,7 @@ function Hero({ movie, logoSrc }: HeroType) {
             <p className="max-w-md md:text-lg lg:text-xl xl:text-2xl">
               {movie.overview}
             </p>
+            <AddToListButton />
           </div>
         </div>
       </section>

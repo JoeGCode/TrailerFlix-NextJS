@@ -1,8 +1,13 @@
 import Link from "next/link";
 import SearchBar from "./SearchBar";
-import { Suspense } from "react";
+import { createClient } from "@/utils/supabase/server";
+import NavbarDropdown from "./NavbarDropdown";
 
-const Navbar = () => {
+async function Navbar() {
+  const supabase = await createClient();
+  const userResponse = await supabase.auth.getUser();
+  const user = userResponse.data?.user;
+
   return (
     <nav className="flex items-center h-20 px-4 w-full my-0 justify-between">
       <Link href="/">
@@ -11,12 +16,19 @@ const Navbar = () => {
         </h1>
       </Link>
       <div className="w-1/2">
-        <Suspense fallback={<div>Loading...</div>}>
-          <SearchBar />
-        </Suspense>
+        <SearchBar />
+      </div>
+      <div>
+        {user ? (
+          <NavbarDropdown />
+        ) : (
+          <Link href="/auth/login">
+            <div className="w-full bg-red-600 rounded p-4 text-lg">Sign In</div>
+          </Link>
+        )}
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;

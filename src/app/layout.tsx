@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${bebasNeue.className} flex flex-col min-h-screen`}>
         <Navbar />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow flex flex-col">{children}</main>
         <Footer />
       </body>
     </html>
