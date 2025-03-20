@@ -1,6 +1,6 @@
 "use client";
 import { MovieVideo } from "@/types/movie";
-import React, { useState } from "react";
+import { useState } from "react";
 import ScrollableRow from "../ScrollableRow";
 import VideoCard from "../VideoCard";
 import YoutubeModal from "../YoutubeModal";

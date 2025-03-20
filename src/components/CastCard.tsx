@@ -1,8 +1,7 @@
 import { MovieCast } from "@/types/movie";
-import { TMDB_IMAGE_BASE_URL } from "@/utils/constants";
-import Image from "next/image";
-import React from "react";
+import { TMDB_IMAGE_BASE_URL } from "@/utils/constants/tmdb";
 import placeholder from "@/utils/shimmerPlaceholderImage";
+import Image from "next/image";
 
 type CastCardType = {
   castMember: MovieCast;

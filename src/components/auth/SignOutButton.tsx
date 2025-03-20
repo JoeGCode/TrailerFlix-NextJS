@@ -1,6 +1,6 @@
 "use client";
+import { signOut } from "@/actions/auth/signOut";
 import { useState } from "react";
-import { signOut } from "@/app/auth/actions/signOut";
 
 export default function SignOutButton() {
   const [loading, setLoading] = useState(false);

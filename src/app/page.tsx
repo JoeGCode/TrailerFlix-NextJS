@@ -1,8 +1,7 @@
+import { getMovies } from "@/actions/movies/getMovies";
 import HomeClientComponent from "@/components/home/HomeClientComponent";
-import { getMovies } from "@/lib/tmdb";
 
 export default async function HomeServerComponent() {
-  // If there is no search, render the main home page
   const [popular, topRated, upcoming] = await Promise.all([
     getMovies("popular"),
     getMovies("top_rated"),

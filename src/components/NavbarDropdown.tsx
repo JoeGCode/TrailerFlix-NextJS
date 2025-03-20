@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import SignOutButton from "./auth/SignOutButton";
 
 function NavbarDropdown() {

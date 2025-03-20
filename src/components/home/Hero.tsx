@@ -1,12 +1,12 @@
 "use client";
 import { Movie, MovieVideo, MovieVideoResults } from "@/types/movie";
-import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import { TMDB_IMAGE_BASE_URL } from "@/utils/constants/tmdb";
 import placeholder from "@/utils/shimmerPlaceholderImage";
-import { MdPlayCircle } from "react-icons/md";
+import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { MdPlayCircle } from "react-icons/md";
 import YoutubeModal from "../YoutubeModal";
-import { TMDB_IMAGE_BASE_URL } from "@/utils/constants";
 
 type HeroType = {
   movie: Movie;

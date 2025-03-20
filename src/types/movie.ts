@@ -1,3 +1,5 @@
+export type MovieCategory = "popular" | "top_rated" | "upcoming";
+
 export type Movie = {
   adult: boolean;
   backdrop_path: string;
@@ -120,13 +122,13 @@ export type MovieImages = {
   }>;
 };
 
-export interface MovieCredits {
+export type MovieCredits = {
   id: number;
   cast: MovieCast[];
   crew: MovieCrew[];
-}
+};
 
-export interface MovieCast {
+export type MovieCast = {
   adult: boolean;
   gender: number;
   id: number;
@@ -139,9 +141,9 @@ export interface MovieCast {
   character: string;
   credit_id: string;
   order: number;
-}
+};
 
-export interface MovieCrew {
+export type MovieCrew = {
   adult: boolean;
   gender: number;
   id: number;
@@ -153,4 +155,4 @@ export interface MovieCrew {
   credit_id: string;
   department: string;
   job: string;
-}
+};

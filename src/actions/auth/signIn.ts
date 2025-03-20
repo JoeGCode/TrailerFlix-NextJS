@@ -3,36 +3,30 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import { signInSchema } from "@/schemas/auth/signInSchema";
 import { createClient } from "@/utils/supabase/server";
-import { signUpSchema } from "../schemas/authSchemas";
 
-type SignUpFormState = {
+type SignInFormState = {
   errors: {
     email?: string[];
     password?: string[];
-    confirmPassword?: string[];
   };
 };
 
-export async function signUp(formState: SignUpFormState, formData: FormData) {
+export async function signIn(formState: SignInFormState, formData: FormData) {
   const supabase = await createClient();
-
   const data = {
     email: formData.get("email"),
     password: formData.get("password"),
-    confirmPassword: formData.get("confirmPassword"),
   };
 
-  const zodResult = signUpSchema.safeParse(data);
+  const zodResult = signInSchema.safeParse(data);
 
   if (!zodResult.success) {
     return { errors: zodResult.error.flatten().fieldErrors };
   }
 
-  const { error } = await supabase.auth.signUp({
-    email: zodResult.data.email,
-    password: zodResult.data.password,
-  });
+  const { error } = await supabase.auth.signInWithPassword(zodResult.data);
 
   if (error) {
     return { errors: { email: [error.message] } };

@@ -1,4 +1,4 @@
-import { getMovieVideos } from "@/lib/tmdb";
+import { getMovieVideos } from "@/actions/movies/getMovieVideos";
 import { type NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {

@@ -1,7 +1,6 @@
 import { MovieVideo } from "@/types/movie";
-import Image from "next/image";
-import React from "react";
 import placeholder from "@/utils/shimmerPlaceholderImage";
+import Image from "next/image";
 
 type VideoCardType = {
   video: MovieVideo;

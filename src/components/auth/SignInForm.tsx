@@ -1,7 +1,7 @@
 "use client";
-import { signIn } from "@/app/auth/actions/signIn";
+import { signIn } from "@/actions/auth/signIn";
 import Link from "next/link";
-import React, { useActionState } from "react";
+import { useActionState } from "react";
 
 function SignInForm() {
   const [formState, formAction] = useActionState(signIn, { errors: {} });

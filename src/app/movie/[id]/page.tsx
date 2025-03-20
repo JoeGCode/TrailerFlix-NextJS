@@ -1,15 +1,12 @@
+import { getMovieCredits } from "@/actions/movies/getMovieCredits";
+import { getMovieDetails } from "@/actions/movies/getMovieDetails";
+import { getMovieImages } from "@/actions/movies/getMovieImages";
+import { getMovieVideos } from "@/actions/movies/getMovieVideos";
 import CastCard from "@/components/CastCard";
 import Hero from "@/components/movie/Hero";
 import VideosAndModal from "@/components/movie/VideosAndModal";
 import ScrollableRow from "@/components/ScrollableRow";
-import {
-  getMovieCredits,
-  getMovieDetails,
-  getMovieImages,
-  getMovieVideos,
-} from "@/lib/tmdb";
 import isNumber from "@/utils/isNumber";
-import React from "react";
 
 async function Page({ params }: { params: Promise<{ id: string }> }) {
   const movieId = (await params).id;

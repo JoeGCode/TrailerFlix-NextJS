@@ -1,7 +1,6 @@
+import { searchMovies } from "@/actions/movies/searchMovies";
 import NoSearchResults from "@/components/search/NoSearchResults";
 import SearchResultsClientComponent from "@/components/search/SearchResultsClientComponent";
-import { searchMovies } from "@/lib/tmdb";
-import React from "react";
 
 type SearchResultsPageType = {
   searchParams: Promise<{ q?: string }>;

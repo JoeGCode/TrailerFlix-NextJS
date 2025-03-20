@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from "react";
 import { MovieResults } from "@/types/movie";
-import Hero from "./Hero";
-import ScrollableRow from "../ScrollableRow";
+import { useState } from "react";
 import MovieCard from "../MovieCard";
+import ScrollableRow from "../ScrollableRow";
 import ScrollableRowMovieCardWrapper from "../ScrollableRowMovieCardWrapper";
+import Hero from "./Hero";
 
 type HomeClientComponentType = {
   popular: MovieResults;

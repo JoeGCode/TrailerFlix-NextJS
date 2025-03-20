@@ -1,8 +1,7 @@
 "use client";
 import { Movie, MovieResults } from "@/types/movie";
-import React from "react";
-import MovieCard from "../MovieCard";
 import { useRouter } from "next/navigation";
+import MovieCard from "../MovieCard";
 
 type SearchResultsClientComponentType = {
   searchResults: MovieResults;

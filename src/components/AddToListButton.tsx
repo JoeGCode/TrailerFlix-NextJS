@@ -1,7 +1,7 @@
 "use client";
 import { createClient } from "@/utils/supabase/client";
 import { User } from "@supabase/supabase-js";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function AddToListButton() {
   const supabase = createClient();
