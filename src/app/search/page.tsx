@@ -17,11 +17,7 @@ async function Page(props: SearchResultsPageType) {
   if (!searchResults || !searchResults.results.length)
     return <NoSearchResults />;
 
-  return (
-    <div className="w-full h-full">
-      <SearchResultsClientComponent searchResults={searchResults} />
-    </div>
-  );
+  return <SearchResultsClientComponent searchResults={searchResults} />;
 }
 
 export default Page;

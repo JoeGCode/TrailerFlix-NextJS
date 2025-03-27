@@ -12,12 +12,12 @@ function MovieCard({ movie, clickHandler = () => {} }: MovieCardType) {
   return (
     <div
       key={movie.id}
-      className="w-full px-2 cursor-pointer relative inline-block"
+      className="relative inline-block w-full cursor-pointer px-2"
       onClick={() => clickHandler(movie)}
     >
-      <div className="relative aspect-[250/374] overflow-hidden rounded-md flex flex-col justify-end text-center">
-        <div className="w-full h-full absolute inset-0 bg-black/80 opacity-0 hover:opacity-100 z-10">
-          <p className="flex justify-center items-center h-full px-2">
+      <div className="relative flex aspect-[250/374] flex-col justify-end overflow-hidden rounded-md text-center">
+        <div className="absolute inset-0 z-10 h-full w-full bg-black/80 opacity-0 hover:opacity-100">
+          <p className="flex h-full items-center justify-center px-2">
             <span className="block w-full truncate whitespace-normal">
               {movie.title}
             </span>

@@ -1,4 +1,4 @@
-export enum Favourites_Type {
+export enum My_List_Type {
   MOVIE = "movie",
   TV = "tv",
   ACTOR = "actor",

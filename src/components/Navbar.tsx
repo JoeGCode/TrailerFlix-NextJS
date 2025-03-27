@@ -9,7 +9,7 @@ async function Navbar() {
   const user = userResponse.data?.user;
 
   return (
-    <nav className="flex items-center h-20 px-4 w-full my-0 justify-between">
+    <nav className="my-0 flex h-20 w-full items-center justify-between px-4">
       <Link href="/">
         <h1 className="text-4xl font-bold">
           Trailer<span className="text-red-500">Flix</span>
@@ -23,7 +23,7 @@ async function Navbar() {
           <NavbarDropdown />
         ) : (
           <Link href="/auth/login">
-            <div className="w-full bg-red-600 rounded p-4 text-lg">Sign In</div>
+            <div className="w-full rounded bg-red-600 p-4 text-lg">Sign In</div>
           </Link>
         )}
       </div>

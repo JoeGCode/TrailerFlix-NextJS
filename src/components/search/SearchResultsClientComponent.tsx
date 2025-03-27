@@ -1,6 +1,7 @@
 "use client";
 import { Movie, MovieResults } from "@/types/movie";
 import { useRouter } from "next/navigation";
+import CardGrid from "../CardGrid";
 import MovieCard from "../MovieCard";
 
 type SearchResultsClientComponentType = {
@@ -14,11 +15,11 @@ function SearchResultsClientComponent({
     push(`/movie/${movie.id}`);
   }
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4 max-w-screen-xl my-0 mx-auto">
+    <CardGrid>
       {searchResults.results.map((movie) => (
         <MovieCard key={movie.id} movie={movie} clickHandler={clickHandler} />
       ))}
-    </div>
+    </CardGrid>
   );
 }
 
