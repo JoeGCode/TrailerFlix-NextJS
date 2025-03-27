@@ -2,7 +2,7 @@ import SignUpForm from "@/components/auth/SignUpForm";
 
 function Page() {
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-300 text-white flex-grow flex-1 h-full">
+    <div className="flex h-full flex-1 flex-grow flex-col items-center justify-center p-8 text-white">
       <SignUpForm />
     </div>
   );
