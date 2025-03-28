@@ -1,7 +1,7 @@
+import Menu from "@/components/Menu";
+import SearchBar from "@/components/Navbar";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
-import Menu from "./Menu";
-import SearchBar from "./SearchBar";
 
 async function Navbar() {
   const supabase = await createClient();

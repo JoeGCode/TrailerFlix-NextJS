@@ -1,10 +1,10 @@
 "use client";
 
+import SignOutButton from "@/components/auth/SignOutButton";
 import { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { useState } from "react";
 import { RiCloseLargeFill, RiMenuFill } from "react-icons/ri";
-import SignOutButton from "./auth/SignOutButton";
 
 type Props = {
   user: User | null;
