@@ -34,10 +34,7 @@ function SignInForm() {
               <p className="text-red-500">{formState.errors.password[0]}</p>
             )}
           </div>
-          <button
-            formAction={formAction}
-            className="mt-4 w-full rounded bg-red-600 p-4 text-2xl"
-          >
+          <button formAction={formAction} className="red-button mt-4">
             Sign in
           </button>
           <p className="mx-auto mt-4">

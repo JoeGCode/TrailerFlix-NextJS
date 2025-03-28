@@ -12,11 +12,7 @@ export default function SignOutButton() {
   }
 
   return (
-    <button
-      onClick={handleSignOut}
-      className="w-full bg-red-600 rounded p-4 text-lg"
-      disabled={loading}
-    >
+    <button onClick={handleSignOut} className="red-button" disabled={loading}>
       {loading ? "Signing out..." : "Sign Out"}
     </button>
   );

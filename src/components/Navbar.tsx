@@ -1,6 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
-import NavbarDropdown from "./NavbarDropdown";
+import Menu from "./Menu";
 import SearchBar from "./SearchBar";
 
 async function Navbar() {
@@ -10,22 +10,18 @@ async function Navbar() {
 
   return (
     <nav className="my-0 flex h-20 w-full items-center justify-between px-4">
-      <Link href="/">
-        <h1 className="text-4xl font-bold">
-          Trailer<span className="text-red-500">Flix</span>
-        </h1>
-      </Link>
-      <div className="w-1/2">
-        <SearchBar />
+      <div className="w-1/4">
+        <Menu user={user} />
       </div>
-      <div>
-        {user ? (
-          <NavbarDropdown />
-        ) : (
-          <Link href="/auth/login">
-            <div className="w-full rounded bg-red-600 p-4 text-lg">Sign In</div>
-          </Link>
-        )}
+      <div className="text-center">
+        <Link href="/">
+          <h1 className="text-4xl font-bold">
+            Trailer<span className="text-red-500">Flix</span>
+          </h1>
+        </Link>
+      </div>
+      <div className="w-1/4">
+        <SearchBar />
       </div>
     </nav>
   );
