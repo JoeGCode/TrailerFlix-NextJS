@@ -1,5 +1,5 @@
 import Menu from "@/components/Menu";
-import SearchBar from "@/components/Navbar";
+import SearchBar from "@/components/SearchBar";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 
