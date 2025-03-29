@@ -13,7 +13,7 @@ A sleek, Netflix-inspired UI for exploring film trailers and information about y
 - [ ] 🤝 **Related and Recommended Films**
 - [ ] 📺 **TV Shows**
 - [ ] 🎭 **Actor Pages**
-- [ ] 💖 **Favorites**
+- [x] 💖 **Favorites** (Users can sign up and add movies to their list)
 
 ## Acknowledgements
 
