@@ -39,5 +39,5 @@ export async function signUp(formState: SignUpFormState, formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/auth/check-email");
 }
