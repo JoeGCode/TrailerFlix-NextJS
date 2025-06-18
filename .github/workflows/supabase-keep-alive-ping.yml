@@ -1,0 +1,17 @@
+name: Supabase Keep-Alive Ping
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Runs at midnight every Sunday
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  ping-database:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make an API request to Supabase
+        run: |
+          curl -L -X POST ${secrets.FUNCTION_URL} \
+  -H 'Authorization: Bearer ${secrets.BEARER_TOKEN} \
+  -H 'Content-Type: application/json' \
+  --data '{"name":"Functions"}'
