@@ -13,5 +13,4 @@ jobs:
         run: |
           curl -L -X POST '${secrets.FUNCTION_URL}' \
                 -H 'Authorization: Bearer ${secrets.BEARER_TOKEN} \
-                -H 'Content-Type: application/json' \
-                --data '{"name":"Functions"}'
+                -H 'Content-Type: application/json'
