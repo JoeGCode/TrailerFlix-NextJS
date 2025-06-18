@@ -11,6 +11,6 @@ jobs:
     steps:
       - name: Make an API request to Supabase
         run: |
-          curl -L -X POST '${{secrets.FUNCTION_URL}}' \
+          curl '${{secrets.FUNCTION_URL}}' \
                 -H 'Authorization: Bearer ${{secrets.BEARER_TOKEN}}' \
                 -H 'Content-Type: application/json'
