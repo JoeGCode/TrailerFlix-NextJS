@@ -1,7 +1,6 @@
 import { getMoviesBatch } from "@/actions/movies/getMoviesBatch";
 import MyListClientComponent from "@/components/user/my-list/MyListClientComponent";
 import { My_List_Type } from "@/types/db";
-import movieDetailsToMovie from "@/utils/movieDetailstoMovie";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -26,14 +25,11 @@ async function Page() {
     .map((item) => item.item_id);
 
   const movieDetails = await getMoviesBatch(movieIds);
-  const movies = movieDetails.map((movieDetail) =>
-    movieDetailsToMovie(movieDetail),
-  );
 
   return (
     <div className="flex flex-col items-center justify-center">
       <h1 className="text-4xl">My List</h1>
-      <MyListClientComponent movies={movies} />
+      <MyListClientComponent movies={movieDetails} />
     </div>
   );
 }

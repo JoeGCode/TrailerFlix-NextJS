@@ -1,16 +1,23 @@
 import { My_List_Type } from "@/types/db";
-import { MovieDetails } from "@/types/movie";
+import { MovieDetailsType } from "@/types/tmdb-types";
 import { TMDB_IMAGE_BASE_URL } from "@/utils/constants/tmdb";
 import placeholder from "@/utils/shimmerPlaceholderImage";
 import Image from "next/image";
 import AddToListButton from "../AddToListButton";
 
 type HeroType = {
-  movie: MovieDetails;
+  movie: MovieDetailsType;
   logoSrc: string | undefined;
 };
 
 function Hero({ movie, logoSrc }: HeroType) {
+  const miniInfo = [
+    movie.release_date ? new Date(movie.release_date).getFullYear() : null,
+    movie.genres ? movie.genres.map((genre) => genre.name).join(" • ") : null,
+    `${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}m`,
+  ]
+    .filter((info) => info !== null)
+    .join(" • ");
   return (
     <>
       <section className="relative h-[60vh] w-full overflow-hidden sm:h-[70vh] md:h-[80vh]">
@@ -18,7 +25,9 @@ function Hero({ movie, logoSrc }: HeroType) {
         <div className="relative float-end h-full w-[70%]">
           <Image
             src={TMDB_IMAGE_BASE_URL + movie.backdrop_path}
-            alt={movie.title}
+            alt={
+              movie.title ?? `Movie backdrop for movie with TMDB ID ${movie.id}`
+            }
             fill
             className="object-cover"
             placeholder={placeholder}
@@ -34,7 +43,9 @@ function Hero({ movie, logoSrc }: HeroType) {
             {logoSrc ? (
               <Image
                 src={TMDB_IMAGE_BASE_URL + logoSrc}
-                alt={movie.title}
+                alt={
+                  movie.title ?? `Movie logo for movie with TMDB ID ${movie.id}`
+                }
                 width={0}
                 height={0}
                 sizes="100vw"
@@ -46,11 +57,7 @@ function Hero({ movie, logoSrc }: HeroType) {
               </h1>
             )}
           </div>
-          <p className="w-full py-4 text-base md:text-lg">
-            {new Date(movie.release_date).getFullYear()} &bull;{" "}
-            {movie.genres.map((genre) => genre.name).join(" \u2022 ")} &bull;{" "}
-            {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m
-          </p>
+          <p className="w-full py-4 text-base md:text-lg">{miniInfo}</p>
           <div className="flex flex-1 flex-col items-center justify-center">
             <p className="max-w-md md:text-lg lg:text-xl xl:text-2xl">
               {movie.overview}

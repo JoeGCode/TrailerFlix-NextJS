@@ -1,12 +1,14 @@
 "use server";
 
-import { MovieDetails } from "@/types/movie";
+import { MovieDetailsResponse } from "@/types/tmdb-types";
 import { getOptions, TMDB_API_BASE_URL } from "@/utils/constants/tmdb";
 
-export async function getMovieDetails(movieId: number): Promise<MovieDetails> {
+export async function getMovieDetails(
+  movieId: number,
+): Promise<MovieDetailsResponse> {
   const response = await fetch(
     `${TMDB_API_BASE_URL}/movie/${movieId}?language=en-US`,
-    getOptions
+    getOptions,
   );
   if (!response.ok) {
     throw new Error("Failed to fetch movie");

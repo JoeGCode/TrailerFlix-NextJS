@@ -1,24 +1,29 @@
 "use client";
-import { Movie, MovieResults } from "@/types/movie";
+import { MovieCardType } from "@/types/custom-types";
+import { MovieSearchArray } from "@/types/tmdb-types";
+import { mapMovieSearchToMoviecard } from "@/utils/mappers/mapToMovieCard";
 import { useRouter } from "next/navigation";
 import CardGrid from "../CardGrid";
 import MovieCard from "../MovieCard";
 
 type SearchResultsClientComponentType = {
-  searchResults: MovieResults;
+  searchResults: MovieSearchArray;
 };
 function SearchResultsClientComponent({
   searchResults,
 }: SearchResultsClientComponentType) {
   const { push } = useRouter();
-  function clickHandler(movie: Movie) {
+  function clickHandler(movie: MovieCardType) {
     push(`/movie/${movie.id}`);
   }
   return (
     <CardGrid>
-      {searchResults.results.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} clickHandler={clickHandler} />
-      ))}
+      {searchResults.map((searchMovie) => {
+        const movie = mapMovieSearchToMoviecard(searchMovie);
+        return (
+          <MovieCard key={movie.id} movie={movie} clickHandler={clickHandler} />
+        );
+      })}
     </CardGrid>
   );
 }

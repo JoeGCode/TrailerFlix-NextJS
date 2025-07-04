@@ -1,26 +1,32 @@
 "use client";
-import { MovieVideo } from "@/types/movie";
+import { MovieVideoArray, MovieVideoType } from "@/types/tmdb-types";
 import { useState } from "react";
 import ScrollableRow from "../ScrollableRow";
 import VideoCard from "../VideoCard";
 import YoutubeModal from "../YoutubeModal";
 
 type VideosAndModalType = {
-  videos: MovieVideo[];
+  videos: MovieVideoArray;
 };
 
 function VideosAndModal({ videos }: VideosAndModalType) {
   const [showModal, setShowModal] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState<MovieVideo | null>(null);
-
-  const teasers = videos.filter((video) => video.type === "Teaser");
-  const trailers = videos.filter((video) => video.type === "Trailer");
-  const clips = videos.filter((video) => video.type === "Clip");
-  const featurettes = videos.filter((video) => video.type === "Featurette");
-  const behindTheScenes = videos.filter(
-    (video) => video.type === "Behind the Scenes"
+  const [selectedVideo, setSelectedVideo] = useState<MovieVideoType | null>(
+    null,
   );
-  function clickHandler(video: MovieVideo) {
+
+  const videosWithKey = videos.filter((video) => !!video.key);
+
+  const teasers = videosWithKey.filter((video) => video.type === "Teaser");
+  const trailers = videosWithKey.filter((video) => video.type === "Trailer");
+  const clips = videosWithKey.filter((video) => video.type === "Clip");
+  const featurettes = videosWithKey.filter(
+    (video) => video.type === "Featurette",
+  );
+  const behindTheScenes = videosWithKey.filter(
+    (video) => video.type === "Behind the Scenes",
+  );
+  function clickHandler(video: MovieVideoType) {
     setSelectedVideo(video);
     setShowModal(true);
   }
@@ -81,7 +87,7 @@ function VideosAndModal({ videos }: VideosAndModalType) {
           ))}
         </ScrollableRow>
       )}
-      {selectedVideo && (
+      {selectedVideo && selectedVideo.key && (
         <YoutubeModal
           videoKey={selectedVideo.key}
           showModal={showModal}

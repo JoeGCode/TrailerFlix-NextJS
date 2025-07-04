@@ -14,10 +14,10 @@ async function Page(props: SearchResultsPageType) {
 
   const searchResults = await searchMovies(searchQuery);
 
-  if (!searchResults || !searchResults.results.length)
+  if (!searchResults || !searchResults.results || !searchResults.results.length)
     return <NoSearchResults />;
 
-  return <SearchResultsClientComponent searchResults={searchResults} />;
+  return <SearchResultsClientComponent searchResults={searchResults.results} />;
 }
 
 export default Page;

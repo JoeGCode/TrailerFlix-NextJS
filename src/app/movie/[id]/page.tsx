@@ -6,6 +6,7 @@ import CastCard from "@/components/CastCard";
 import Hero from "@/components/movie/Hero";
 import VideosAndModal from "@/components/movie/VideosAndModal";
 import ScrollableRow from "@/components/ScrollableRow";
+import { ensureResults } from "@/utils/ensureResults";
 import isNumber from "@/utils/isNumber";
 
 async function Page({ params }: { params: Promise<{ id: string }> }) {
@@ -21,15 +22,20 @@ async function Page({ params }: { params: Promise<{ id: string }> }) {
       getMovieVideos(idNumber),
       getMovieCredits(idNumber),
     ]);
-  const logoSrc = movieImages.logos.find(
-    (logo) => logo.iso_639_1 === "en"
+  const logoSrc = movieImages.logos?.find(
+    (logo) => logo.iso_639_1 === "en",
   )?.file_path;
-  const youtubeVideos = movieVideos.results.filter(
+  const movieVideoResults = ensureResults(movieVideos.results);
+  const youtubeVideos = movieVideoResults.filter(
     (video) =>
-      video.site === "YouTube" && video.official && video.iso_639_1 === "en"
+      video.site === "YouTube" &&
+      video.official &&
+      video.iso_639_1 === "en" &&
+      !!video.key,
   );
-  const cast = movieCredits.cast.filter(
-    (c) => c.known_for_department === "Acting" && c.character && c.profile_path
+  const castResults = ensureResults(movieCredits.cast);
+  const cast = castResults.filter(
+    (c) => c.known_for_department === "Acting" && c.character && c.profile_path,
   );
   return (
     <>

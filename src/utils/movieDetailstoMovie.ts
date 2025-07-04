@@ -1,5 +1,3 @@
-import { Movie, MovieDetails } from "@/types/movie";
-
 export default function movieDetailsToMovie(movieDetails: MovieDetails): Movie {
   return {
     adult: movieDetails.adult,
