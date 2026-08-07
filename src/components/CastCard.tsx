@@ -1,5 +1,4 @@
 import { MovieCastType } from "@/types/tmdb-types";
-import { TMDB_IMAGE_BASE_URL } from "@/utils/constants/tmdb";
 import placeholder from "@/utils/shimmerPlaceholderImage";
 import Image from "next/image";
 
@@ -18,18 +17,20 @@ function CastCard({ castMember }: CastCardType) {
             </span>
           </p>
         </div>
-        <Image
-          src={TMDB_IMAGE_BASE_URL + castMember.profile_path}
-          alt={castMember.name ?? "Cast member"}
-          fill
-          sizes="(max-width: 640px) 50vw,
+        {castMember.profile_path && (
+          <Image
+            src={castMember.profile_path}
+            alt={castMember.name ?? "Cast member"}
+            fill
+            sizes="(max-width: 640px) 50vw,
           (max-width: 768px) 33vw,
           (max-width: 1024px) 25vw,
           (max-width: 1280px) 20vw,
           17vw"
-          style={{ objectFit: "cover" }}
-          placeholder={placeholder}
-        />
+            style={{ objectFit: "cover" }}
+            placeholder={placeholder}
+          />
+        )}
       </div>
       <div className="flex flex-col items-center justify-center truncate whitespace-normal p-2">
         <p className="text-center">{castMember.name}</p>

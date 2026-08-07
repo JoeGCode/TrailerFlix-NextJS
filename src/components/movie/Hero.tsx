@@ -1,6 +1,5 @@
 import { My_List_Type } from "@/types/db";
 import { MovieDetailsType } from "@/types/tmdb-types";
-import { TMDB_IMAGE_BASE_URL } from "@/utils/constants/tmdb";
 import placeholder from "@/utils/shimmerPlaceholderImage";
 import Image from "next/image";
 import AddToListButton from "../AddToListButton";
@@ -23,15 +22,18 @@ function Hero({ movie, logoSrc }: HeroType) {
       <section className="relative h-[60vh] w-full overflow-hidden sm:h-[70vh] md:h-[80vh]">
         {/* Image Backdrop */}
         <div className="relative float-end h-full w-[70%]">
-          <Image
-            src={TMDB_IMAGE_BASE_URL + movie.backdrop_path}
-            alt={
-              movie.title ?? `Movie backdrop for movie with TMDB ID ${movie.id}`
-            }
-            fill
-            className="object-cover"
-            placeholder={placeholder}
-          />
+          {movie.backdrop_path && (
+            <Image
+              src={movie.backdrop_path}
+              alt={
+                movie.title ??
+                `Movie backdrop for movie with TMDB ID ${movie.id}`
+              }
+              fill
+              className="object-cover"
+              placeholder={placeholder}
+            />
+          )}
         </div>
         {/* Black Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
@@ -42,7 +44,7 @@ function Hero({ movie, logoSrc }: HeroType) {
           <div className="relative flex h-[12vh] w-full items-start justify-start">
             {logoSrc ? (
               <Image
-                src={TMDB_IMAGE_BASE_URL + logoSrc}
+                src={logoSrc}
                 alt={
                   movie.title ?? `Movie logo for movie with TMDB ID ${movie.id}`
                 }

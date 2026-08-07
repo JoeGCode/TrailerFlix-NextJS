@@ -1,7 +1,6 @@
 "use client";
 import { MovieCardType } from "@/types/custom-types";
 import { MovieVideoArray, MovieVideoResponse } from "@/types/tmdb-types";
-import { TMDB_IMAGE_BASE_URL } from "@/utils/constants/tmdb";
 import { ensureResults } from "@/utils/ensureResults";
 import placeholder from "@/utils/shimmerPlaceholderImage";
 import Image from "next/image";
@@ -54,7 +53,7 @@ function Hero({ movie }: HeroType) {
     <section className="relative h-[60vh] w-full overflow-hidden sm:h-[70vh] md:h-[80vh]">
       {/* Image Backdrop */}
       <Image
-        src={TMDB_IMAGE_BASE_URL + movie.backdrop_path}
+        src={movie.backdrop_path}
         alt={movie.title ?? `Movie poster for movie with TMDB ID ${movie.id}`}
         fill
         className="object-cover"

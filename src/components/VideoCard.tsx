@@ -22,7 +22,7 @@ function VideoCard({ video, clickHandler = () => {} }: VideoCardType) {
           </p>
         </div>
         <Image
-          src={`https://i.ytimg.com/vi/${video.key}/maxresdefault.jpg`}
+          src={`https://i.ytimg.com/vi_webp/${video.key}`}
           alt={video.name ?? "Video thumbnail"}
           fill
           sizes="(max-width: 640px) 50vw,
